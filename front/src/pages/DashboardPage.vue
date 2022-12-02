@@ -1,25 +1,26 @@
 <template>
   <div class="q-pa-xl">
     <h2>Dashboard</h2>
-    <p>{{ message }}</p>
-    <List :lists="message"></List>
+    <p>{{ lists }}</p>
+    <p v-for="(item, index) in lists" v-bind:key="index">
+      <List :title="item.title" :updatedAt="item.createdAt" :createdAt="item.updatedAt"></List>
+    </p>
   </div>
 </template>
 <script>
 import List from 'components/list/ListComponent.vue'
-import * as Task from './../services/tasks'
+import * as Lists from './../services/lists'
 
 // Syntax vue2 Option API
 export default {
   data: () => ({
-    message: 'Hello'
+    lists: Array
   }),
-  mounted () {
-    console.log('Component mounted')
-  },
   async created () {
-    console.log('Component created')
-    this.message = await Task.getAllTasks()
+    // const res = await Task.getAllTasks()
+    const { data } = await Lists.getAllTasks()
+    this.lists = data
+    console.log(data)
   },
   computed: {
   },
