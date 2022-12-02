@@ -8,7 +8,7 @@
 </template>
 <script>
 import List from 'components/list/ListComponent.vue'
-import * as Lists from './../services/lists'
+import * as ServiceLists from './../services/lists'
 
 // Syntax vue2 Option API
 export default {
@@ -17,7 +17,7 @@ export default {
   }),
   async created () {
     // const res = await Task.getAllTasks()
-    const { data } = await Lists.getAllTasks()
+    const { data } = await ServiceLists.getAllLists()
     this.lists = data
     console.log(data)
   },

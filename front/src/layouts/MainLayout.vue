@@ -55,14 +55,14 @@
             />
         </q-tab>
         <q-route-tab
-          to="/"
+          to="/createlist"
           icon="add_circle"
           class="text-purple"
           aria-label="create"
           exact
         />
         <q-route-tab
-          to="/params"
+          to="/"
           icon="person"
           class="text-grey"
           aria-label="Paramètres"
