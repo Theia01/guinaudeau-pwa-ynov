@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+    <!-- <q-header elevated>
       <q-toolbar>
         <q-btn
           flat
@@ -12,12 +12,10 @@
         />
 
         <q-toolbar-title>
-          Quasar App
+          Liste App
         </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
-    </q-header>
+    </q-header> -->
 
     <q-drawer
       v-model="leftDrawerOpen"
@@ -38,6 +36,41 @@
         />
       </q-list>
     </q-drawer>
+
+    <q-footer elevated>
+      <q-tabs
+      class="bg-grey-1"
+      indicator-color="purple"
+      align="justify"
+      >
+        <q-tab>
+          <q-btn
+              flat
+              dense
+              round
+              icon="menu"
+              aria-label="Menu"
+              class="text-grey"
+              @click="toggleLeftDrawer"
+            />
+        </q-tab>
+        <q-route-tab
+          to="/"
+          icon="add_circle"
+          class="text-purple"
+          aria-label="create"
+          exact
+        />
+        <q-route-tab
+          to="/params"
+          icon="person"
+          class="text-grey"
+          aria-label="Paramètres"
+          exact
+        />
+
+      </q-tabs>
+    </q-footer>
 
     <q-page-container>
       <router-view />
