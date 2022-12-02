@@ -47,6 +47,7 @@ export default {
       }
     },
     onReset () {
+      this.name = ''
     }
   },
   watch: {

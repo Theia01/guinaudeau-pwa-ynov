@@ -4,6 +4,13 @@
       <q-card-section>
         <div class="text-h6">{{title}}</div>
         <div class="text-subtitle2">Créer le : {{ createdAt }} <br> Mise à jour le : {{ updatedAt }} <br> id : {{ id }}</div>
+        <q-separator inset />
+        <q-card-section>
+          Cette carte ne contient aucune tâches. Ajoutez en une depuis la liste !
+        </q-card-section>
+        <q-card-actions vertical>
+          <q-btn flat>Voir la liste complète</q-btn>
+        </q-card-actions>
       </q-card-section>
     </q-card>
   </div>
