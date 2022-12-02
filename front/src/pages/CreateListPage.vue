@@ -24,23 +24,27 @@
   </template>
 <script>
 import * as ServiceLists from './../services/lists'
+import { Notify } from 'quasar'
 
 // Syntax vue2 Option API
 export default {
   data: () => ({
     name: ''
   }),
-  async created () {
-    // const res = await Task.getAllTasks()
-    // const { data } = await Lists.getAllTasks()
-    // this.lists = data
-    // console.log(data)
-  },
-  computed: {
-  },
   methods: {
     async onSubmit () {
-      console.log(await ServiceLists.createList(this.name))
+      if (await ServiceLists.createList(this.name)) {
+        Notify.create({
+          type: 'positive',
+          message: `Liste ${this.name} créée`
+        })
+        window.location = '/#/'
+      } else {
+        Notify.create({
+          type: 'negative',
+          message: 'Création de la liste impossible'
+        })
+      }
     },
     onReset () {
     }
