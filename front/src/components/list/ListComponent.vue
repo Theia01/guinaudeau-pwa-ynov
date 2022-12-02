@@ -3,7 +3,7 @@
     <q-card class="my-card">
       <q-card-section>
         <div class="text-h6">{{title}}</div>
-        <div class="text-subtitle2">Créer le : {{ createdAt }} <br> Mise à jour le : {{ updatedAt }}</div>
+        <div class="text-subtitle2">Créer le : {{ createdAt }} <br> Mise à jour le : {{ updatedAt }} <br> id : {{ id }}</div>
       </q-card-section>
     </q-card>
   </div>
@@ -25,6 +25,10 @@ export default {
       type: Date,
       required: false,
       default: null
+    },
+    id: {
+      type: String,
+      required: true
     }
   },
   mounted () {

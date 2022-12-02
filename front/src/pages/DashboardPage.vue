@@ -1,9 +1,8 @@
 <template>
   <div class="q-pa-xl">
-    <h2>Dashboard</h2>
-    <p>{{ lists }}</p>
+    <h2>Bonjour Lisa 👋</h2>
     <p v-for="(item, index) in lists" v-bind:key="index">
-      <List :title="item.title" :updatedAt="item.createdAt" :createdAt="item.updatedAt"></List>
+      <List :title="item.title" :updatedAt="item.createdAt" :createdAt="item.updatedAt" :id="item._id"></List>
     </p>
   </div>
 </template>
