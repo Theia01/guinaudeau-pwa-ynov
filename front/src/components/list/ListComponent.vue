@@ -3,7 +3,7 @@
     <q-card class="my-card">
       <q-card-section>
         <div class="text-h6">{{title}}</div>
-        <div class="text-subtitle2">Créer le : {{ createdAt }} <br> Mise à jour le : {{ updatedAt }} <br> id : {{ id }}</div>
+        <div class="text-subtitle2">Créer le : {{ getFormattedDate(createdAt) }} <br> Mise à jour le : {{ getFormattedDate(updatedAt) }} <br> id : {{ id }}</div>
         <q-separator inset />
         <q-card-section>
           Cette carte ne contient aucune tâches. Ajoutez en une depuis la liste !
@@ -16,6 +16,7 @@
   </div>
 </template>
 <script>
+import moment from 'moment'
 
 export default {
   props: {
@@ -41,6 +42,9 @@ export default {
   methods: {
     redirectList () {
       window.location = '#/list/' + this.id + '/'
+    },
+    getFormattedDate (date) {
+      return moment(date).format('D MMMM YYYY')
     }
   }
 

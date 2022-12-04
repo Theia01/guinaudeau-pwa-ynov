@@ -9,7 +9,7 @@
         <q-item-section>
           <q-item-label>{{title}}</q-item-label>
           <q-item-label caption>
-            Créer le : {{ createdAt }} <br> Mise à jour le : {{ updatedAt }} <br> id : {{ id }}
+            Créer le : {{ getFormattedDate(createdAt) }} <br> Mise à jour le : {{getFormattedDate(updatedAt) }} <br> id : {{ id }}
           </q-item-label>
           <q-item-label caption>
             {{ description }}
@@ -20,6 +20,7 @@
   </div>
 </template>
 <script>
+import moment from 'moment'
 
 export default {
   props: {
@@ -54,6 +55,11 @@ export default {
   data () {
     return {
       check: this.done
+    }
+  },
+  methods: {
+    getFormattedDate (date) {
+      return moment(date).format('D MMMM YYYY')
     }
   }
 }
