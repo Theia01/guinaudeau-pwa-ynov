@@ -18,3 +18,13 @@ export function createList (titleList) {
     return false
   })
 }
+
+export function deleteList (id) {
+  return api.delete('/lists/' + id)
+    .then((response) => {
+      return true
+    }, (error) => {
+      console.log(error)
+      return false
+    })
+}

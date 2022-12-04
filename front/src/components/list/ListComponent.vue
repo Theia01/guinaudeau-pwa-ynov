@@ -24,7 +24,8 @@
 </template>
 <script>
 import moment from 'moment'
-import { BottomSheet } from 'quasar'
+import { BottomSheet, Notify } from 'quasar'
+import * as ServiceLists from './../../services/lists'
 
 export default {
   props: {
@@ -71,6 +72,19 @@ export default {
             id: 'delete'
           }
         ]
+      }).onOk(async action => {
+        if (action.id === 'delete') {
+          if (await ServiceLists.deleteList(this.id)) {
+            location.reload()
+          } else {
+            Notify.create({
+              type: 'negative',
+              message: 'Impossible de supprimer la liste pour le moment'
+            })
+          }
+        } else if (action.id === 'edit') {
+          console.log('Edition non implémenter')
+        }
       })
     }
   }
