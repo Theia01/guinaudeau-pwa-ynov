@@ -20,6 +20,16 @@ export async function id (ctx) {
   }
 }
 
+export async function tasksByList (ctx) {
+  try {
+    if(ctx.params.id.length <= 0) return ctx.notFound({ message: 'Id missing, task ressource not found' })
+    const task = await Task.find({ list : ctx.params.id })
+    ctx.ok(task)
+  } catch (e) {
+    ctx.badRequest({ message: e.message })
+  }
+}
+
 export async function create (ctx) {
   try {
     const TaskValidationSchema = Joi.object({

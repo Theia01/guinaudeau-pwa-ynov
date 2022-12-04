@@ -9,4 +9,6 @@ tasks.post('/', TaskControllers.create)
 tasks.put('/:id', TaskControllers.update)
 tasks.del('/:id', TaskControllers.del)
 
+tasks.get('/list/:id', TaskControllers.tasksByList)
+
 export default tasks
