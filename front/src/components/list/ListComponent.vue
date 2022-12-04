@@ -8,7 +8,7 @@
         <q-card-section>
           Cette carte ne contient aucune tâches. Ajoutez en une depuis la liste !
         </q-card-section>
-        <q-card-actions vertical>
+        <q-card-actions vertical @click="redirectList">
           <q-btn flat>Voir la liste complète</q-btn>
         </q-card-actions>
       </q-card-section>
@@ -38,8 +38,11 @@ export default {
       required: true
     }
   },
-  mounted () {
-    console.log('ok ' + this.title)
+  methods: {
+    redirectList () {
+      window.location = '#/list/' + this.id + '/'
+    }
   }
+
 }
 </script>

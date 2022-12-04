@@ -2,7 +2,7 @@
   <div class="q-pa-xl">
     <h2>Bonjour Lisa 👋</h2>
     <p v-for="(item, index) in lists" v-bind:key="index">
-      <List :title="item.title" :updatedAt="item.createdAt" :createdAt="item.updatedAt" :id="item._id"></List>
+      <List :title="item.title" :updatedAt="new Date(item.createdAt)" :createdAt="new Date(item.updatedAt)" :id="item._id"></List>
     </p>
   </div>
 </template>
@@ -19,13 +19,6 @@ export default {
     // const res = await Task.getAllTasks()
     const { data } = await ServiceLists.getAllLists()
     this.lists = data
-    console.log(data)
-  },
-  computed: {
-  },
-  methods: {
-  },
-  watch: {
   },
   components: {
     List
