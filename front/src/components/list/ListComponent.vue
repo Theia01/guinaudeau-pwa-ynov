@@ -11,10 +11,15 @@
           </div>
         </div>
         <div class="text-subtitle2">Créer le : {{ getFormattedDate(createdAt) }} <br> Mise à jour le : {{ getFormattedDate(updatedAt) }} <br> id : {{ id }}</div>
-        <q-separator inset />
         <q-card-section>
-          Cette carte ne contient aucune tâches. Ajoutez en une depuis la liste !
+          <div v-for="(item, index) in tasks" v-bind:key="index">
+            <Task :title="item.title" :description="item.description" :done="item.done" :id="item._id"></Task>
+          </div>
+          <div v-if="(tasks.length < 1)">
+            Cette carte ne contient aucune tâches. Ajoutez en une depuis la liste !
+          </div>
         </q-card-section>
+        <q-separator inset />
         <q-card-actions vertical @click="redirectList">
           <q-btn flat>Voir la liste complète</q-btn>
         </q-card-actions>
@@ -25,7 +30,10 @@
 <script>
 import moment from 'moment'
 import { BottomSheet, Notify } from 'quasar'
+import Task from 'components/task/TaskComponent.vue'
+
 import * as ServiceLists from './../../services/lists'
+import * as ServiceTasks from './../../services/tasks'
 
 export default {
   props: {
@@ -47,6 +55,15 @@ export default {
       type: String,
       required: true
     }
+  },
+  data () {
+    return {
+      tasks: Array
+    }
+  },
+  async created () {
+    const { data } = await ServiceTasks.getAllTasksfromList(this.id)
+    this.tasks = data.slice(0, 2)
   },
   methods: {
     redirectList () {
@@ -87,6 +104,9 @@ export default {
         }
       })
     }
+  },
+  components: {
+    Task
   }
 }
 </script>

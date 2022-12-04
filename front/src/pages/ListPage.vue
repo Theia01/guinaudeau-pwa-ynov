@@ -1,9 +1,11 @@
 <template>
     <div class="q-pa-xl">
       <h2>Liste {{ title }}</h2>
-      <p v-for="(item, index) in tasks" v-bind:key="index">
-        <Task :title="item.title" :description="item.description" :done="item.done" :updatedAt="new Date(item.createdAt)" :createdAt="new Date(item.updatedAt)" :id="item._id"></Task>
-      </p>
+      <div v-for="(item, index) in tasks" v-bind:key="index">
+          <q-card class="my-card">
+            <Task :title="item.title" :description="item.description" :done="item.done" :id="item._id"></Task>
+          </q-card>
+      </div>
       <p v-if="(tasks.length < 1)">
         Aucune tâche
       </p>
@@ -33,3 +35,8 @@ export default {
   }
 }
 </script>
+<style>
+.my-card{
+  margin-bottom: 15px;
+}
+</style>

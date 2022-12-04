@@ -1,22 +1,17 @@
 <template>
   <div>
-    <q-card class="my-card">
-      <q-item tag="label" v-ripple>
-        <q-item-section side top>
-          <q-checkbox v-model="check" />
-        </q-item-section>
+    <q-item tag="label" v-ripple>
+      <q-item-section side top>
+        <q-checkbox v-model="check" />
+      </q-item-section>
 
-        <q-item-section>
-          <q-item-label>{{title}}</q-item-label>
-          <q-item-label caption>
-            Créer le : {{ getFormattedDate(createdAt) }} <br> Mise à jour le : {{getFormattedDate(updatedAt) }} <br> id : {{ id }}
-          </q-item-label>
-          <q-item-label caption>
-            {{ description }}
-          </q-item-label>
-        </q-item-section>
-      </q-item>
-    </q-card>
+      <q-item-section>
+        <q-item-label>{{title}}</q-item-label>
+        <q-item-label caption>
+          {{ description }}
+        </q-item-label>
+      </q-item-section>
+    </q-item>
   </div>
 </template>
 <script>
@@ -36,16 +31,6 @@ export default {
     done: {
       type: Boolean,
       required: true
-    },
-    createdAt: {
-      type: Date,
-      required: false,
-      default: null
-    },
-    updatedAt: {
-      type: Date,
-      required: false,
-      default: null
     },
     id: {
       type: String,
