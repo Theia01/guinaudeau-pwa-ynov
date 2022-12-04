@@ -4,6 +4,10 @@ export function getAllLists () {
   return api.get('/lists')
 }
 
+export function getList (id) {
+  return api.get('/lists/' + id)
+}
+
 export function createList (titleList) {
   return api.post('/lists', {
     title: titleList
