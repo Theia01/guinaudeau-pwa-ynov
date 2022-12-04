@@ -2,7 +2,14 @@
   <div>
     <q-card class="my-card">
       <q-card-section>
-        <div class="text-h6">{{title}}</div>
+        <div class="row justify-between">
+          <div class="text-h6">
+            {{title}}
+          </div>
+          <div>
+            <q-icon class="cursor-pointer" name="more_horiz" size="2em" @click="showOptionsList"/>
+          </div>
+        </div>
         <div class="text-subtitle2">Créer le : {{ getFormattedDate(createdAt) }} <br> Mise à jour le : {{ getFormattedDate(updatedAt) }} <br> id : {{ id }}</div>
         <q-separator inset />
         <q-card-section>
@@ -17,6 +24,7 @@
 </template>
 <script>
 import moment from 'moment'
+import { BottomSheet } from 'quasar'
 
 export default {
   props: {
@@ -45,8 +53,26 @@ export default {
     },
     getFormattedDate (date) {
       return moment(date).format('D MMMM YYYY')
+    },
+    showOptionsList () {
+      BottomSheet.create({
+        message: 'List Options',
+        grid: false,
+        actions: [
+          {
+            label: 'Editer',
+            icon: 'edit',
+            id: 'edit'
+          },
+          {
+            label: 'Supprimer',
+            icon: 'delete',
+            color: 'red',
+            id: 'delete'
+          }
+        ]
+      })
     }
   }
-
 }
 </script>

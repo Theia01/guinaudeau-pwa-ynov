@@ -49,10 +49,6 @@ export default {
     onReset () {
       this.name = ''
     }
-  },
-  watch: {
-  },
-  components: {
   }
 }
 </script>
