@@ -11,7 +11,27 @@ export function getAllTasksfromList (id) {
 export function updateBoolTask (id, boolean) {
   return api.put('/tasks/' + id, {
     done: boolean
-  }).then((response) => {
+  })
+}
+
+export function createTask (titleTask, idList, descriptionTask = '') {
+  let jsonWithParams = []
+  if (descriptionTask !== '') {
+    jsonWithParams = {
+      title: titleTask,
+      list: idList,
+      description: descriptionTask
+    }
+  } else {
+    jsonWithParams = {
+      title: titleTask,
+      list: idList
+    }
+  }
+  console.log(jsonWithParams)
+
+  return api.post('/tasks', jsonWithParams).then((response) => {
+    console.log(response)
     return true
   }, (error) => {
     console.log(error)

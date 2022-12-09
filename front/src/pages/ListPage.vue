@@ -9,6 +9,9 @@
       <p v-if="(tasks.length < 1)">
         Aucune tâche
       </p>
+      <div class="text-purple q-gutter-md" @click="redirectTask">
+        <q-icon class="cursor-pointer" name="add_circle" color="text-purple" size="3rem" />
+      </div>
     </div>
   </template>
 <script>
@@ -32,6 +35,11 @@ export default {
   },
   components: {
     Task
+  },
+  methods: {
+    redirectTask () {
+      window.location = '#/createtask/' + this.idlist + '/'
+    }
   }
 }
 </script>

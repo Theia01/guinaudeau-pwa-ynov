@@ -64,7 +64,6 @@ const tasks = ref([
 const messageReverse = computed(() => message.value.split('').reverse().join(''))
 function dumb (v) {
   message.value = `Counter incremented ${v}`
-  console.log('Incremented')
 }
 
 function f () {

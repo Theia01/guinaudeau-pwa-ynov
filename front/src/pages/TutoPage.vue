@@ -60,11 +60,7 @@ export default {
     result: [],
     loading: false
   }),
-  mounted () {
-    console.log('Component mounted')
-  },
   async created () {
-    console.log('Component created')
     await this.loadResult()
   },
   computed: {

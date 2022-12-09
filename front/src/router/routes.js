@@ -6,6 +6,7 @@ const routes = [
       { path: '', component: () => import('pages/DashboardPage.vue') },
       { path: 'list/:idlist', component: (idlist) => import('pages/ListPage.vue'), props: true },
       { path: 'createlist', component: () => import('pages/CreateListPage.vue') },
+      { path: 'createtask/:idlist', component: (idlist) => import('pages/CreateTaskPage.vue'), props: true },
       { path: 'index', component: () => import('pages/IndexPage.vue') }
     ]
   },
