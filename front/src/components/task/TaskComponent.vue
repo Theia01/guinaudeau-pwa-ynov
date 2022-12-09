@@ -16,6 +16,7 @@
 </template>
 <script>
 import moment from 'moment'
+import * as ServiceTasks from './../../services/tasks'
 
 export default {
   props: {
@@ -45,6 +46,11 @@ export default {
   methods: {
     getFormattedDate (date) {
       return moment(date).format('D MMMM YYYY')
+    }
+  },
+  watch: {
+    check: function (value) {
+      ServiceTasks.updateBoolTask(this.id, value)
     }
   }
 }

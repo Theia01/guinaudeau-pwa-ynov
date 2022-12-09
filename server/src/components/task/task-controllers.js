@@ -49,9 +49,9 @@ export async function create (ctx) {
 export async function update (ctx) {
   try {
     const TaskValidationSchema = Joi.object({
-      title: Joi.string().required(),
+      title: Joi.string(),
       description: Joi.string(),
-      list: Joi.string().required(),
+      list: Joi.string(),
       done: Joi.boolean()
     })
     const { error, value } = TaskValidationSchema.validate(ctx.request.body)
