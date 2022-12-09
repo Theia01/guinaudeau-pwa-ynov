@@ -11,12 +11,17 @@
           {{ description }}
         </q-item-label>
       </q-item-section>
+      <q-item-section avatar @click="deleteTask">
+          <q-icon name="delete" />
+      </q-item-section>
     </q-item>
+
   </div>
 </template>
 <script>
 import moment from 'moment'
 import * as ServiceTasks from './../../services/tasks'
+import { Notify } from 'quasar'
 
 export default {
   props: {
@@ -46,6 +51,17 @@ export default {
   methods: {
     getFormattedDate (date) {
       return moment(date).format('D MMMM YYYY')
+    },
+    async deleteTask () {
+      console.log('bin')
+      if (await ServiceTasks.deleteTask(this.id)) {
+        location.reload()
+      } else {
+        Notify.create({
+          type: 'negative',
+          message: 'Impossible de supprimer la liste pour le moment'
+        })
+      }
     }
   },
   watch: {

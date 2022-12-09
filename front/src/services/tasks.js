@@ -38,3 +38,13 @@ export function createTask (titleTask, idList, descriptionTask = '') {
     return false
   })
 }
+
+export function deleteTask (id) {
+  return api.delete('/tasks/' + id)
+    .then((response) => {
+      return true
+    }, (error) => {
+      console.log(error)
+      return false
+    })
+}
