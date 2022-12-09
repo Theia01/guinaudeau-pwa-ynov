@@ -15,6 +15,13 @@
         :rules="[ val => val && val.length > 0 || 'Stp écrit un truc']"
       />
 
+      <q-input
+        filled
+        v-model="description"
+        label="Description tâche"
+        hint="Non obligatoire"
+      />
+
       <div>
         <q-btn label="Créer" type="submit" color="primary"/>
         <q-btn label="Retour à la liste" type="reset" color="primary" flat class="q-ml-sm" />
@@ -29,17 +36,19 @@ import { Notify } from 'quasar'
 // Syntax vue2 Option API
 export default {
   data: () => ({
-    name: ''
+    name: '',
+    description: ''
   }),
   props: ['idlist'],
   methods: {
     async onSubmit () {
-      if (await ServiceTasks.createTask(this.name, this.idlist)) {
+      if (await ServiceTasks.createTask(this.name, this.idlist, this.description)) {
         Notify.create({
           type: 'positive',
           message: `Tâche ${this.name} créée`
         })
         this.name = ' '
+        this.description = ''
       } else {
         Notify.create({
           type: 'negative',

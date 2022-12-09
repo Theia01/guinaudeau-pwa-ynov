@@ -16,7 +16,7 @@ export function updateBoolTask (id, boolean) {
 
 export function createTask (titleTask, idList, descriptionTask = '') {
   let jsonWithParams = []
-  if (descriptionTask !== '') {
+  if (descriptionTask !== '' && descriptionTask !== undefined) {
     jsonWithParams = {
       title: titleTask,
       list: idList,
