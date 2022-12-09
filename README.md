@@ -6,16 +6,24 @@
 
 ## Objectif
 
-On front : 
+Listes :
  - [x] Create list
  - [x] Read list
- - [ ] Update list
+ - [x] Update list
  - [x] Delete list
 
+Tasks :
  - [x] Create task
  - [x] Read task
  - [x] Update task
+ - [x] Check task 
  - [x] Delete task
+
+ Other : 
+ - [x] Menu
+ - [x] Redirection Back
+ - [x] Notification that item or created or updated
+
 
 ## Vidéo du fonctionnement 
  ![Alt Text](./demo.gif)
