@@ -2,9 +2,9 @@
   <img src="https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square" alt="Gitmoji">
 </a>
 
-# List
+# Cours web mobile M2 Nantes
 
-Cours web mobile M2 Nantes
+## Objectif
 
 On front : 
  - [x] Create list
@@ -16,3 +16,7 @@ On front :
  - [x] Read task
  - [x] Update task
  - [x] Delete task
+
+## Vidéo du fonctionnement 
+ ![Alt Text](./demo.gif)
+ Lien vidéo si le GIF met trop de temps à charger 👉 [https://watch.screencastify.com/v/JL2eQgSWtQBGrunHhsnJ](https://watch.screencastify.com/v/JL2eQgSWtQBGrunHhsnJ)
