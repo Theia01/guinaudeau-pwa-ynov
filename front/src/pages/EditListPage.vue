@@ -36,6 +36,7 @@ export default {
   async created () {
     const titleList = await ServiceLists.getList(this.idlist)
     this.title = titleList.data.title
+    this.name = this.title
   },
   methods: {
     async onSubmit () {
