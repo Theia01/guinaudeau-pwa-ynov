@@ -55,7 +55,7 @@
             />
         </q-tab>
         <q-route-tab
-          to="/createlist"
+          to="/list/create"
           icon="add_circle"
           class="text-purple"
           aria-label="create"

@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     redirectTask () {
-      this.$router.push('/createtask/' + this.idlist)
+      this.$router.push('/task/create/' + this.idlist)
     },
     async handleGetAllTasksfromList () {
       const { data } = await ServiceTasks.getAllTasksfromList(this.idlist)
