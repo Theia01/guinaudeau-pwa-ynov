@@ -10,7 +10,7 @@ const routes = [
     path: '/list',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: ':idlist', component: (idlist) => import('pages/ListPage.vue'), props: true },
+      { path: ':idlist', component: () => import('pages/ListPage.vue'), props: true },
       { path: 'create', component: () => import('pages/CreateListPage.vue') },
       { path: 'edit/:idlist', component: () => import('pages/EditListPage.vue'), props: true }
     ]
@@ -19,7 +19,8 @@ const routes = [
     path: '/task',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: 'create/:idlist', component: (idlist) => import('pages/CreateTaskPage.vue'), props: true }
+      { path: 'create/:idlist', component: () => import('pages/CreateTaskPage.vue'), props: true },
+      { path: 'edit/:idtask', component: () => import('pages/EditTaskPage.vue'), props: true }
     ]
   },
   {

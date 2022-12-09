@@ -4,8 +4,12 @@ export function getAllTasks () {
   return api.get('/tasks')
 }
 
-export function getAllTasksfromList (id) {
-  return api.get('/tasks/list/' + id)
+export function getAllTasksfromList (idList) {
+  return api.get('/tasks/list/' + idList)
+}
+
+export function getOneTasks (idTask) {
+  return api.get('/tasks/' + idTask)
 }
 
 export function updateBoolTask (id, boolean) {
@@ -14,7 +18,17 @@ export function updateBoolTask (id, boolean) {
   })
 }
 
-export function createTask (titleTask, idList, descriptionTask = '') {
+export function updateTask (id, titleTask, descriptionTask) {
+  if (descriptionTask === '') {
+    descriptionTask = ' '
+  }
+  return api.put('/tasks/' + id, {
+    title: titleTask,
+    description: descriptionTask
+  })
+}
+
+export function createTask (idList, titleTask, descriptionTask = '') {
   let jsonWithParams = []
   if (descriptionTask !== '' && descriptionTask !== undefined) {
     jsonWithParams = {
@@ -28,7 +42,6 @@ export function createTask (titleTask, idList, descriptionTask = '') {
       list: idList
     }
   }
-  console.log(jsonWithParams)
 
   return api.post('/tasks', jsonWithParams).then((response) => {
     console.log(response)

@@ -1,6 +1,6 @@
 <template>
     <div class="q-pa-xl">
-      <h3>Créer une nouvelle tâche </h3>
+      <h3>Editer une tâche de la liste {{ titleList }}</h3>
       <q-form
       @submit="onSubmit"
       @reset="onReset"
@@ -23,8 +23,8 @@
       />
 
       <div>
-        <q-btn label="Créer" type="submit" color="primary"/>
-        <q-btn label="Retour à la liste" type="reset" color="primary" flat class="q-ml-sm" />
+        <q-btn label="Mettre à jour" type="submit" color="primary"/>
+        <q-btn label="Annuler" type="reset" color="primary" flat class="q-ml-sm" />
       </div>
     </q-form>
     </div>
@@ -37,27 +37,38 @@ import { Notify } from 'quasar'
 export default {
   data: () => ({
     name: '',
-    description: ''
+    description: '',
+    idList: '',
+    titleList: ''
   }),
-  props: ['idlist'],
+  props: ['idtask'],
+  async created () {
+    await this.handleGetTask()
+  },
   methods: {
     async onSubmit () {
-      if (await ServiceTasks.createTask(this.idlist, this.name, this.description)) {
+      if (await ServiceTasks.updateTask(this.idtask, this.name, this.description)) {
         Notify.create({
           type: 'positive',
-          message: `Tâche ${this.name} créée`
+          message: `Tâche ${this.name} modifier`
         })
-        this.name = ' '
-        this.description = ''
+        this.$router.push('/list/' + this.idList)
       } else {
         Notify.create({
           type: 'negative',
-          message: 'Création de la tâche impossible'
+          message: 'Modification de la tâche impossible'
         })
       }
     },
-    onReset () {
-      this.$router.push('/list/' + this.idlist)
+    async onReset () {
+      await this.handleGetTask()
+    },
+    async handleGetTask () {
+      const { data } = await ServiceTasks.getOneTasks(this.idtask)
+      this.name = data.title
+      this.description = data.description
+      this.idList = data.list._id
+      this.titleList = data.list.title
     }
   }
 }

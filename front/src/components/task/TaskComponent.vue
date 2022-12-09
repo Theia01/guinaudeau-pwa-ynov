@@ -11,6 +11,9 @@
           {{ description }}
         </q-item-label>
       </q-item-section>
+      <q-item-section avatar @click="editTask">
+        <q-icon name="edit" />
+      </q-item-section>
       <q-item-section avatar @click="deleteTask">
           <q-icon name="delete" />
       </q-item-section>
@@ -62,6 +65,9 @@ export default {
           message: 'Impossible de supprimer la liste pour le moment'
         })
       }
+    },
+    editTask () {
+      this.$router.push('/task/edit/' + this.id)
     }
   },
   watch: {
