@@ -55,7 +55,7 @@ export default {
     async deleteTask () {
       console.log('bin')
       if (await ServiceTasks.deleteTask(this.id)) {
-        location.reload()
+        this.$emit('deleteTask')
       } else {
         Notify.create({
           type: 'negative',

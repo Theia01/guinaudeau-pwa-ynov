@@ -3,7 +3,7 @@
       <h2>Liste {{ title }}</h2>
       <div v-for="(item, index) in tasks" v-bind:key="index">
           <q-card class="my-card">
-            <Task :title="item.title" :description="item.description" :done="item.done" :id="item._id"></Task>
+            <Task @deleteTask="handleGetAllTasksfromList" :title="item.title" :description="item.description" :done="item.done" :id="item._id"></Task>
           </q-card>
       </div>
       <p v-if="(tasks.length < 1)">
@@ -27,8 +27,7 @@ export default {
   }),
   props: ['idlist'],
   async created () {
-    const { data } = await ServiceTasks.getAllTasksfromList(this.idlist)
-    this.tasks = data
+    await this.handleGetAllTasksfromList()
 
     const titleList = await ServiceList.getList(this.idlist)
     this.title = titleList.data.title
@@ -38,7 +37,11 @@ export default {
   },
   methods: {
     redirectTask () {
-      window.location = '#/createtask/' + this.idlist + '/'
+      this.$router.push('/createtask/' + this.idlist)
+    },
+    async handleGetAllTasksfromList () {
+      const { data } = await ServiceTasks.getAllTasksfromList(this.idlist)
+      this.tasks = data
     }
   }
 }

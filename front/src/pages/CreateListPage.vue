@@ -38,7 +38,7 @@ export default {
           type: 'positive',
           message: `Liste ${this.name} créée`
         })
-        window.location = '/#/'
+        this.$router.push('/')
       } else {
         Notify.create({
           type: 'negative',

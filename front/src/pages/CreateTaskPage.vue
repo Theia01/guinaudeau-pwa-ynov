@@ -48,7 +48,7 @@ export default {
       }
     },
     onReset () {
-      window.location = '#/list/' + this.idlist + '/'
+      this.$router.push('/list/' + this.idlist)
     }
   }
 }

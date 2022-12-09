@@ -108,7 +108,7 @@ export default defineComponent({
     data.forEach(item => {
       linksList.push({
         title: `${item.title}`,
-        link: window.location = '#/list/' + item._id + '/'
+        link: this.$router.push('/list/' + item._id)
       })
     })
 

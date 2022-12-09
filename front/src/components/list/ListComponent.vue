@@ -13,7 +13,7 @@
         <div class="text-subtitle2">Créer le : {{ getFormattedDate(createdAt) }} <br> Mise à jour le : {{ getFormattedDate(updatedAt) }} <br> id : {{ id }}</div>
         <q-card-section>
           <div v-for="(item, index) in tasks" v-bind:key="index">
-            <Task :title="item.title" :description="item.description" :done="item.done" :id="item._id"></Task>
+            <Task @deleteTask="handlegetAllTasksfromList" :title="item.title" :description="item.description" :done="item.done" :id="item._id"></Task>
           </div>
           <div v-if="(tasks.length < 1)">
             Cette carte ne contient aucune tâches. Ajoutez en une depuis la liste !
@@ -62,12 +62,15 @@ export default {
     }
   },
   async created () {
-    const { data } = await ServiceTasks.getAllTasksfromList(this.id)
-    this.tasks = data.slice(0, 2)
+    await this.handlegetAllTasksfromList()
   },
   methods: {
     redirectList () {
-      window.location = '#/list/' + this.id + '/'
+      this.$router.push('/list/' + this.id)
+    },
+    async handlegetAllTasksfromList () {
+      const { data } = await ServiceTasks.getAllTasksfromList(this.id)
+      this.tasks = data.slice(0, 2)
     },
     getFormattedDate (date) {
       return moment(date).format('D MMMM YYYY')
@@ -92,7 +95,7 @@ export default {
       }).onOk(async action => {
         if (action.id === 'delete') {
           if (await ServiceLists.deleteList(this.id)) {
-            location.reload()
+            this.$emit('deleteList')
           } else {
             Notify.create({
               type: 'negative',
