@@ -19,6 +19,17 @@ export function createList (titleList) {
   })
 }
 
+export function updateList (id, titleList) {
+  return api.put('/lists/' + id, {
+    title: titleList
+  }).then((response) => {
+    return true
+  }, (error) => {
+    console.log(error)
+    return false
+  })
+}
+
 export function deleteList (id) {
   return api.delete('/lists/' + id)
     .then((response) => {

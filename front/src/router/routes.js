@@ -11,7 +11,8 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: ':idlist', component: (idlist) => import('pages/ListPage.vue'), props: true },
-      { path: 'create', component: () => import('pages/CreateListPage.vue') }
+      { path: 'create', component: () => import('pages/CreateListPage.vue') },
+      { path: 'edit/:idlist', component: () => import('pages/EditListPage.vue'), props: true }
     ]
   },
   {

@@ -10,7 +10,7 @@
             <q-icon class="cursor-pointer" name="more_horiz" size="2em" @click="showOptionsList"/>
           </div>
         </div>
-        <div class="text-subtitle2">Créer le : {{ getFormattedDate(createdAt) }} <br> Mise à jour le : {{ getFormattedDate(updatedAt) }} <br> id : {{ id }}</div>
+        <div class="text-subtitle2">Créer le : {{ getFormattedDate(createdAt) }} <br> Mise à jour le : {{ getFormattedDate(updatedAt) }} </div>
         <q-card-section>
           <div v-for="(item, index) in tasks" v-bind:key="index">
             <Task @deleteTask="handlegetAllTasksfromList" :title="item.title" :description="item.description" :done="item.done" :id="item._id"></Task>
@@ -103,7 +103,7 @@ export default {
             })
           }
         } else if (action.id === 'edit') {
-          console.log('Edition non implémenter')
+          this.$router.push('list/edit/' + this.id)
         }
       })
     }
