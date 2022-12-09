@@ -1,5 +1,6 @@
 <template>
     <div class="q-pa-xl">
+      <Back></Back>
       <h3>Créer une nouvelle liste</h3>
       <q-form
       @submit="onSubmit"
@@ -23,6 +24,7 @@
     </div>
   </template>
 <script>
+import Back from 'components/BackComponent.vue'
 import * as ServiceLists from './../services/lists'
 import { Notify } from 'quasar'
 
@@ -49,6 +51,9 @@ export default {
     onReset () {
       this.name = ''
     }
+  },
+  components: {
+    Back
   }
 }
 </script>

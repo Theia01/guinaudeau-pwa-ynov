@@ -1,6 +1,7 @@
 <template>
     <div class="q-pa-xl">
-      <h3>Editer une tâche de la liste {{ titleList }}</h3>
+      <Back></Back>
+      <h3>Editer une tâche de la liste : {{ titleList }}</h3>
       <q-form
       @submit="onSubmit"
       @reset="onReset"
@@ -30,6 +31,7 @@
     </div>
   </template>
 <script>
+import Back from 'components/BackComponent.vue'
 import * as ServiceTasks from './../services/tasks'
 import { Notify } from 'quasar'
 
@@ -70,6 +72,9 @@ export default {
       this.idList = data.list._id
       this.titleList = data.list.title
     }
+  },
+  components: {
+    Back
   }
 }
 </script>

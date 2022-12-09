@@ -2,7 +2,7 @@
   <div class="q-pa-xl">
     <h2>Bonjour Lisa 👋</h2>
     <p v-for="(item, index) in lists" v-bind:key="index">
-      <List @deleteList="handleGetAllLists" :title="item.title" :updatedAt="new Date(item.createdAt)" :createdAt="new Date(item.updatedAt)" :id="item._id"></List>
+      <List @deleteList="handleGetAllLists" :title="item.title" :updatedAt="new Date(item.updatedAt)" :createdAt="new Date(item.createdAt)" :id="item._id"></List>
     </p>
   </div>
 </template>

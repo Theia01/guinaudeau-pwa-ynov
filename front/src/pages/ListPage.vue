@@ -1,5 +1,6 @@
 <template>
     <div class="q-pa-xl">
+      <Back></Back>
       <h2>Liste {{ title }}</h2>
       <div v-for="(item, index) in tasks" v-bind:key="index">
           <q-card class="my-card">
@@ -15,6 +16,7 @@
     </div>
   </template>
 <script>
+import Back from 'components/BackComponent.vue'
 import Task from 'components/task/TaskComponent.vue'
 import * as ServiceTasks from './../services/tasks'
 import * as ServiceList from './../services/lists'
@@ -33,7 +35,8 @@ export default {
     this.title = titleList.data.title
   },
   components: {
-    Task
+    Task,
+    Back
   },
   methods: {
     redirectTask () {

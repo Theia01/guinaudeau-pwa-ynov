@@ -1,5 +1,6 @@
 <template>
     <div class="q-pa-xl">
+      <Back></Back>
       <h3>Créer une nouvelle tâche </h3>
       <q-form
       @submit="onSubmit"
@@ -30,6 +31,7 @@
     </div>
   </template>
 <script>
+import Back from 'components/BackComponent.vue'
 import * as ServiceTasks from './../services/tasks'
 import { Notify } from 'quasar'
 
@@ -59,6 +61,9 @@ export default {
     onReset () {
       this.$router.push('/list/' + this.idlist)
     }
+  },
+  components: {
+    Back
   }
 }
 </script>
