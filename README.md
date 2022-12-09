@@ -5,3 +5,14 @@
 # List
 
 Cours web mobile M2 Nantes
+
+On front : 
+ - [x] Create list
+ - [x] Read list
+ - [] Update list
+ - [x] Delete list
+ 
+ - [x] Create task
+ - [x] Read task
+ - [x] Update task
+ - [x] Delete task
